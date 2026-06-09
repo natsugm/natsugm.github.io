@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>꼭 그렇게... 많이 사야만... 속이 후련했냐!</title>
+    <!-- Tailwind CSS for elegant styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght=300;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow: hidden;
+            background-color: #0f172a;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .font-title {
+            font-family: 'Black Han Sans', sans-serif;
+        }
+
+        /* Custom scrollbar just in case */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen text-slate-100 p-2 sm:p-4">
+
+    <!-- Main Game Container -->
+    <div id="game-container" class="relative w-full max-w-4xl h-[500px] bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border-4 border-emerald-800 flex flex-col items-center justify-center">
+        
+        <!-- ==================== SCREEN 1: START SCREEN ==================== -->
+        <div id="screen-start" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-20 bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-950 transition-opacity duration-500 opacity-100">
+            <!-- Decorative Background SVGs -->
+            <div class="absolute -top-12 -left-12 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-12 -right-12 w-48 h-48 bg-teal-500/10 rounded-full blur-3xl"></div>
+
+            <!-- Warning Badge -->
+            <span class="px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-emerald-300 uppercase bg-emerald-900/50 border border-emerald-500/30 rounded-full animate-pulse">
+                환경 보호의 이면을 밝히는 게임형 프로그램
+            </span>
+
+            <!-- Main Title with movie poster vibe -->
+            <h1 class="text-3xl md:text-5xl font-title text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-emerald-400 to-teal-200 mb-6 tracking-wide drop-shadow-md leading-snug">
+                꼭 그렇게...<br class="sm:hidden"> 많이 사야만...<br>
+                <span class="text-emerald-400 text-4xl md:text-6xl text-yellow-400">속이 후련했냐!</span>
+            </h1>
+
+            <p class="max-w-md text-sm md:text-base text-slate-300 mb-8 leading-relaxed font-light">
+                우리는 환경을 위한다는 핑계로 <br class="hidden sm:inline">
+                또 다른 <strong class="text-emerald-300 font-bold">‘쓰레기’</strong>를 사고 있는 것은 아닐까요?<br>
+                직접 달리고 체험하며 진실을 마주해 보세요.
+            </p>
+
+            <!-- Buttons -->
+            <button id="btn-start" class="group relative px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-lg md:text-xl rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 overflow-hidden">
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-play animate-bounce"></i> 게임 시작하기
+                </span>
+                <span class="absolute inset-0 bg-white/20 transform -skew-x-12 translate-x-full group-hover:translate-x-[-150%] transition-transform duration-1000"></span>
+            </button>
+
+            <!-- Quick manual -->
+            <div class="mt-8 text-xs text-slate-400 flex items-center gap-4">
+                <span><i class="fa-solid fa-keyboard text-emerald-400 mr-1"></i> Space키 / 화면 터치: 점프</span>
+                <span class="h-3 w-px bg-slate-700"></span>
+                <span><i class="fa-solid fa-whiskey-glass text-emerald-400 mr-1"></i> 목표: 텀블러 20개 획득</span>
+            </div>
+        </div>
+
+        <!-- ==================== SCREEN 1.5: INTRO CINEMATIC SCREEN ==================== -->
+        <div id="screen-intro" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-15 bg-gradient-to-br from-slate-950 via-emerald-950 to-slate-950 transition-opacity duration-500 opacity-0 hidden">
+            <!-- Glowing effect background -->
+            <div class="absolute w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
+            
+            <!-- Large Character container -->
+            <div class="relative w-44 h-44 mb-4 flex items-center justify-center scale-110 transition-transform duration-700">
+                <!-- SVG styled character posing proudly -->
+                <svg viewBox="0 0 100 120" class="w-full h-full drop-shadow-[0_0_20px_rgba(52,211,153,0.4)]">
+                    <!-- Head -->
+                    <circle cx="50" cy="35" r="18" fill="#fbcfe8" />
+                    <!-- Headband -->
+                    <rect x="32" y="22" width="36" height="6" rx="2" fill="#f43f5e" />
+                    <!-- Eyes with proud look -->
+                    <circle cx="44" cy="35" r="2.5" fill="#0f172a" />
+                    <circle cx="56" cy="35" r="2.5" fill="#0f172a" />
+                    <!-- Proud smile -->
+                    <path d="M 44 43 Q 50 48 56 43" stroke="#0f172a" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                    <!-- Body/Emerald Tee -->
+                    <rect x="28" y="53" width="44" height="42" rx="10" fill="#10b981" />
+                    <!-- Leaf badge -->
+                    <ellipse cx="50" cy="74" rx="7" ry="10" fill="#a7f3d0" transform="rotate(30, 50, 74)" />
+                    <!-- Glowing Tumbler in Hand -->
+                    <g transform="translate(64, 42) rotate(15)">
+                        <path d="M5 10 L8 50 L22 50 L25 10 Z" fill="#38bdf8" />
+                        <rect x="3" y="3" width="24" height="7" rx="2" fill="#e2e8f0" />
+                        <text x="15" y="33" fill="#ffffff" font-size="7" font-weight="bold" text-anchor="middle" font-family="sans-serif">ECO</text>
+                    </g>
+                    <!-- Left Arm waving proudly -->
+                    <path d="M 28 65 Q 12 55 18 40" stroke="#fbcfe8" stroke-width="7" stroke-linecap="round" fill="none" />
+                </svg>
+            </div>
+
+            <!-- Dialogue box -->
+            <div class="relative bg-slate-900/95 border-2 border-emerald-500/60 p-4 rounded-2xl max-w-md shadow-xl mb-6">
+                <p class="text-emerald-300 font-title text-base md:text-lg leading-relaxed tracking-wider">
+                    "나는야 텀블러 수집광!<br>
+                    기다려라, 텀블러! 나는 오늘도 환경을 지킨ㄷr…✨"
+                </p>
+                <!-- Dialogue Pointer -->
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-3 bg-slate-900 border-l-2 border-t-2 border-emerald-500/60 transform rotate-45"></div>
+            </div>
+
+            <!-- Next button -->
+            <button id="btn-intro-go" class="group px-8 py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-base rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2">
+                기대하며 달려가기! <i class="fa-solid fa-running animate-bounce"></i>
+            </button>
+        </div>
+
+        <!-- ==================== SCREEN 2: GAME RUNNING SCREEN ==================== -->
+        <div id="screen-game" class="absolute inset-0 z-10 hidden transition-opacity duration-500 opacity-0">
+            <!-- Canvas for running action -->
+            <canvas id="game-canvas" class="w-full h-full block"></canvas>
+
+            <!-- HUD Overlay -->
+            <div class="absolute top-4 left-4 right-4 flex justify-between items-center pointer-events-none select-none">
+                <!-- Tumbler Counter -->
+                <div class="flex items-center gap-3 bg-slate-900/80 border border-emerald-500/40 px-4 py-2 rounded-full backdrop-blur-sm">
+                    <div class="w-8 h-8 flex items-center justify-center bg-emerald-500 rounded-full animate-pulse text-slate-950">
+                        <!-- Tumbler Icon -->
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M7 2h10l1 4H6l1-4zm0 6h10l-1 14H8L7 8zm4 3v7h2v-7h-2z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">수집한 텀블러</div>
+                        <div class="text-xl font-black text-white flex items-baseline gap-1">
+                            <span id="hud-count" class="text-emerald-400 text-2xl">0</span>
+                            <span class="text-slate-500 text-xs">/ 20</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Distance/Alert Banner -->
+                <div class="hidden sm:flex items-center gap-2 bg-slate-900/80 px-4 py-2 rounded-full border border-slate-700 backdrop-blur-sm">
+                    <span class="w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
+                    <span class="text-xs text-slate-300">경고: 텀블러가 과다 생산 중입니다!</span>
+                </div>
+            </div>
+
+            <!-- Mobile Tap Area Indicator (Hidden on large, but hints user they can tap) -->
+            <div class="absolute bottom-4 right-4 pointer-events-none text-slate-400/50 text-xs bg-slate-900/40 p-2 rounded border border-slate-700/30 sm:hidden">
+                <i class="fa-solid fa-hand-pointer animate-bounce mr-1"></i> 화면 터치시 점프
+            </div>
+        </div>
+
+        <!-- ==================== SCREEN 3: INTERACTIVE CUTSCENE VIDEO ==================== -->
+        <div id="screen-cutscene" class="absolute inset-0 z-30 hidden bg-slate-950 flex flex-col justify-between overflow-hidden transition-opacity duration-500 opacity-0">
+            <!-- Stage container for rendering house inside canvas or absolute containers -->
+            <div class="relative w-full flex-grow flex items-center justify-center bg-amber-950/20">
+                <!-- Background House Wall -->
+                <div class="absolute inset-x-0 bottom-0 top-1/4 bg-slate-800 border-t-8 border-slate-700 flex flex-col justify-end p-8">
+                    <!-- Elegant window and shelf -->
+                    <div class="absolute top-8 left-12 w-28 h-36 bg-cyan-900/30 border-4 border-slate-600 rounded flex flex-col justify-around p-2">
+                        <div class="w-full h-1/2 border-b border-slate-600/50"></div>
+                        <div class="text-[10px] text-cyan-400/40 text-center">My Cozy Home</div>
+                    </div>
+                    <!-- Frame shelf -->
+                    <div class="absolute top-1/3 right-12 w-32 h-3 bg-amber-800 rounded"></div>
+                    <div class="absolute top-1/3 right-20 -mt-6 w-6 h-6 bg-emerald-600/30 border border-emerald-500 rounded-sm"></div>
+                </div>
+
+                <!-- Ground/Floor -->
+                <div class="absolute inset-x-0 bottom-0 h-24 bg-amber-900/80 border-t-4 border-amber-950"></div>
+
+                <!-- Sub-Canvas for Tumbler Rain Physics inside house -->
+                <canvas id="cutscene-canvas" class="absolute inset-0 w-full h-full z-10"></canvas>
+
+                <!-- Status/Dialogue Box inside Cutscene -->
+                <div class="absolute top-6 left-1/2 transform -translate-x-1/2 z-20 bg-slate-900/90 border border-slate-700 px-6 py-2.5 rounded-full shadow-lg flex items-center gap-2 max-w-[90%] text-center">
+                    <span id="cutscene-dialogue" class="text-sm md:text-base text-yellow-300 font-bold">
+                        집으로 돌아왔다... 그런데 모아둔 텀블러가 너무 많아!
+                    </span>
+                </div>
+            </div>
+
+            <!-- White Out Transition Overlay -->
+            <div id="white-out" class="absolute inset-0 bg-white opacity-0 pointer-events-none transition-opacity duration-1000 z-50 flex flex-col items-center justify-center text-slate-950 p-6">
+                <div class="text-center max-w-xl scale-95 transition-transform duration-1000 delay-100" id="white-out-content">
+                    <i class="fa-solid fa-triangle-exclamation text-red-600 text-6xl mb-6 animate-pulse"></i>
+                    <h2 class="text-4xl md:text-5xl font-title text-slate-900 mb-6 tracking-tight leading-tight">
+                        그린워싱(Greenwashing),<br>
+                        <span class="text-red-600">역효과</span>를 가져올 수 있습니다.
+                    </h2>
+                    <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+                        친환경 마케팅에 속아 가치소비라 여겼던 것들이<br>
+                        결국 과소비로 연결되어 지구를 더 파괴하고 있습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== SCREEN 4: EDUCATION INFOGRAPHIC (VIDEO ENDING) ==================== -->
+        <div id="screen-education" class="absolute inset-0 z-40 hidden bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 flex flex-col p-4 md:p-6 overflow-y-auto transition-opacity duration-500 opacity-0">
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                <div class="flex items-center gap-2 text-emerald-400">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    <span class="font-title text-base md:text-lg tracking-wide uppercase">그린워싱과 진짜 친환경</span>
+                </div>
+                <!-- Time/Progress Bar (Hidden as requested, clock text not shown but preserved in DOM) -->
+                <div class="hidden text-xs bg-slate-800 px-2 py-1 rounded-full text-slate-400 font-mono">
+                    <span class="text-emerald-400 font-bold" id="edu-timer">00:00</span> / 01:00
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 flex-grow items-stretch">
+                
+                <!-- Slide Scene 1: Greenwashing Concept (Reduced to 30s) -->
+                <div id="slide-concept" class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 md:p-5 flex flex-col justify-between transition-all duration-500">
+                    <div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-0.5 text-[10px] bg-red-900/80 text-red-300 font-bold rounded-md">상식 1단계</span>
+                            <h3 class="text-base md:text-lg font-bold text-slate-200">그린워싱(Greenwashing)이란?</h3>
+                        </div>
+                        <p class="text-xs md:text-sm text-slate-300 leading-relaxed mb-4">
+                            실제로는 친환경적이지 않지만, 광고나 포장 등을 통해 마치 친환경적인 것처럼 위장하는 <strong>‘위장 환경주의’</strong>를 뜻합니다. 기업들이 매출 증대를 위해 소비자들의 도덕적 책임감을 자극하는 마케팅 기법입니다.
+                        </p>
+                        
+                        <!-- Visual Indicator for Greenwashing -->
+                        <div class="bg-slate-950 p-3 rounded-lg border border-red-500/20 space-y-2">
+                            <div class="flex justify-between text-[11px] text-slate-400">
+                                <span>포장재 속 천연 성분 표기</span>
+                                <span class="text-red-400 font-bold">환경 기여도 극소수</span>
+                            </div>
+                            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-red-500 h-full w-[15%]" id="bar-greenwash-1"></div>
+                            </div>
+                            <div class="flex justify-between text-[11px] text-slate-400 pt-1">
+                                <span>생산/폐기시 발생하는 유해물질</span>
+                                <span class="text-red-400 font-bold">오염 증가</span>
+                            </div>
+                            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-red-500 h-full w-[85%]" id="bar-greenwash-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800/60 flex items-center gap-2 text-amber-400 text-xs">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span>환경 마크 획득 여부와 생산 공정을 꼭 체크하세요!</span>
+                    </div>
+                </div>
+
+                <!-- Slide Scene 2: Consumer Truth (Reduced to 30s) -->
+                <div id="slide-truth" class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 md:p-5 flex flex-col justify-between transition-all duration-500 opacity-50">
+                    <div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-0.5 text-[10px] bg-emerald-900/80 text-emerald-300 font-bold rounded-md">상식 2단계</span>
+                            <h3 class="text-base md:text-lg font-bold text-slate-200">진짜 환경 물품들의 역습</h3>
+                        </div>
+                        <p class="text-xs md:text-sm text-slate-300 leading-relaxed mb-4">
+                            텀블러 하나가 일회용 컵보다 환경에 이롭기 위해서는 <strong>최소 220회 이상</strong> 연속으로 사용되어야 합니다. 에코백 역시 면 제작 시 엄청난 물과 탄소가 소모되어 <strong>최소 131회 이상</strong> 써야 비로소 가치가 증명됩니다.
+                        </p>
+
+                        <!-- Infographic / Chart -->
+                        <div class="grid grid-cols-2 gap-3 text-center text-xs">
+                            <div class="bg-emerald-950/40 p-2 rounded-lg border border-emerald-500/20">
+                                <div class="text-emerald-400 font-black text-lg mb-0.5">220회 이상</div>
+                                <div class="text-[10px] text-slate-400">텀블러 권장 재사용 횟수</div>
+                            </div>
+                            <div class="bg-emerald-950/40 p-2 rounded-lg border border-emerald-500/20">
+                                <div class="text-emerald-400 font-black text-lg mb-0.5">131회 이상</div>
+                                <div class="text-[10px] text-slate-400">에코백 권장 재사용 횟수</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800/60 flex items-center gap-2 text-emerald-400 text-xs">
+                        <i class="fa-solid fa-seedling"></i>
+                        <span>"새로 사지 않고 가지고 있는 것을 끝까지 쓰는 것"이 최고의 환경보호입니다.</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Interactive Controller at Bottom -->
+            <div class="mt-4 bg-slate-950/90 border border-slate-800 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <button id="btn-edu-play-pause" class="w-10 h-10 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 flex items-center justify-center shadow-md transition-transform active:scale-95">
+                        <i class="fa-solid fa-pause" id="play-pause-icon"></i>
+                    </button>
+                    <div>
+                        <div class="text-xs text-slate-400">시네마틱 정보 시청 상태</div>
+                        <div class="text-sm font-bold text-slate-200" id="edu-status-text">전반부: 그린워싱에 대하여 시청 중...</div>
+                    </div>
+                </div>
+
+                <!-- Complete / Replay buttons -->
+                <div class="flex gap-2 w-full sm:w-auto">
+                    <button id="btn-replay" class="flex-1 sm:flex-none px-4 py-2 bg-slate-800 hover:bg-slate-700 text-xs font-semibold rounded-lg border border-slate-700 transition">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> 처음부터 다시하기
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script Block containing all Game and Scene Management Logic -->
+    <script>
+        // --- IMMERSIVE CORE CONFIGURATIONS ---
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'greenwashing-awareness-game';
+        
+        // --- SCREEN SELECTORS ---
+        const screenStart = document.getElementById('screen-start');
+        const screenIntro = document.getElementById('screen-intro');
+        const screenGame = document.getElementById('screen-game');
+        const screenCutscene = document.getElementById('screen-cutscene');
+        const screenEducation = document.getElementById('screen-education');
+
+        // --- BUTTONS ---
+        const btnStart = document.getElementById('btn-start');
+        const btnIntroGo = document.getElementById('btn-intro-go');
+        const btnEduPlayPause = document.getElementById('btn-edu-play-pause');
+        const playPauseIcon = document.getElementById('play-pause-icon');
+        const btnReplay = document.getElementById('btn-replay');
+
+        // --- EDUCATION INFOGRAPHIC SELECTORS ---
+        const eduTimer = document.getElementById('edu-timer');
+        const eduStatusText = document.getElementById('edu-status-text');
+        const slideConcept = document.getElementById('slide-concept');
+        const slideTruth = document.getElementById('slide-truth');
+
+        // --- HUDS ---
+        const hudCount = document.getElementById('hud-count');
+
+        // --- GAME SYSTEM VARS ---
+        let currentScreen = 'start';
+        let collectedTumblers = 0;
+        const TARGET_TUMBLERS = 20;
+
+        // --- CANVAS SETUPS ---
+        const gameCanvas = document.getElementById('game-canvas');
+        const gameCtx = gameCanvas.getContext('2d');
+        const cutsceneCanvas = document.getElementById('cutscene-canvas');
+        const cutsceneCtx = cutsceneCanvas.getContext('2d');
+
+        // --- AUDIO / SFX GENERATORS (WEB AUDIO API) ---
+        // Synthesizing Retro sound effects without needing external files
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playSound(type) {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            if (type === 'jump') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(500, audioCtx.currentTime + 0.15);
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.15);
+            } else if (type === 'collect') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.08); // E5
+                osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.16); // G5
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.3);
+            } else if (type === 'warning') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(100, audioCtx.currentTime);
+                osc.frequency.linearRampToValueAtTime(220, audioCtx.currentTime + 0.4);
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.5);
+            } else if (type === 'crash') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.6);
+                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.6);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.6);
+            }
+        }
+
+        // --- RESIZING CANVASES TO FIT ---
+        function resizeCanvases() {
+            const container = document.getElementById('game-container');
+            const rect = container.getBoundingClientRect();
+            
+            gameCanvas.width = rect.width;
+            gameCanvas.height = rect.height;
+
+            cutsceneCanvas.width = rect.width;
+            cutsceneCanvas.height = cutsceneCanvas.parentElement.clientHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvases);
+
+        // --- SMOOTH SCREEN TRANSITION HELPER (Min 0.2s Buffer) ---
+        function changeScreen(fromEl, toEl, callback) {
+            // Smoothly fade out current screen
+            fromEl.classList.add('opacity-0');
+            
+            setTimeout(() => {
+                fromEl.classList.add('hidden');
+                
+                // Show new screen in transparent state
+                toEl.classList.remove('hidden');
+                toEl.offsetHeight; // Force DOM reflow to trigger CSS transitions
+                toEl.classList.remove('opacity-0');
+                toEl.classList.add('opacity-100');
+                
+                // Keep 0.25 seconds buffer before running any initial mechanics
+                setTimeout(() => {
+                    if (callback) callback();
+                }, 250);
+
+            }, 500); // Wait for transition-opacity (0.5s duration)
+        }
+
+        // --- ENUMS & CLASSES FOR GAMEPLAY ---
+        // Player/Character state
+        const player = {
+            x: 80,
+            y: 0,
+            width: 44,
+            height: 64,
+            vy: 0,
+            gravity: 0.6,
+            jumpStrength: -11,
+            isGrounded: false,
+            walkFrame: 0,
+            walkSpeed: 0.15,
+            update: function(canvasHeight, groundY) {
+                // Apply Gravity
+                this.vy += this.gravity;
+                this.y += this.vy;
+
+                // Ceiling cap
+                if (this.y < 0) this.y = 0;
+
+                // Check Ground
+                const limit = groundY - this.height;
+                if (this.y >= limit) {
+                    this.y = limit;
+                    this.vy = 0;
+                    this.isGrounded = true;
+                } else {
+                    this.isGrounded = false;
+                }
+
+                // Animation ticks
+                if (this.isGrounded) {
+                    this.walkFrame += this.walkSpeed;
+                } else {
+                    this.walkFrame = 1.5; // Fixed jump frame
+                }
+            },
+            jump: function() {
+                if (this.isGrounded) {
+                    this.vy = this.jumpStrength;
+                    this.isGrounded = false;
+                    playSound('jump');
+                }
+            },
+            draw: function(ctx) {
+                ctx.save();
+                
+                // Head bobbing based on walk frame
+                const frame = Math.floor(this.walkFrame) % 4;
+                const bob = (frame === 1 || frame === 3) ? 3 : 0;
+                
+                // Draw Body Shadow on Ground
+                ctx.fillStyle = 'rgba(0,0,0,0.2)';
+                ctx.beginPath();
+                ctx.ellipse(this.x + this.width/2, this.y + this.height, 16, 5, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Simple Stylish vector Character
+                // Legs
+                ctx.lineWidth = 4;
+                ctx.strokeStyle = '#38bdf8'; // Sky blue pants
+                
+                // Left leg
+                ctx.beginPath();
+                ctx.moveTo(this.x + 15, this.y + 40);
+                if (frame === 0) ctx.lineTo(this.x + 10, this.y + this.height);
+                else if (frame === 1) ctx.lineTo(this.x + 18, this.y + this.height - 3);
+                else if (frame === 2) ctx.lineTo(this.x + 22, this.y + this.height);
+                else ctx.lineTo(this.x + 12, this.y + this.height - 2);
+                ctx.stroke();
+
+                // Right leg
+                ctx.beginPath();
+                ctx.moveTo(this.x + 29, this.y + 40);
+                if (frame === 0) ctx.lineTo(this.x + 32, this.y + this.height - 2);
+                else if (frame === 1) ctx.lineTo(this.x + 25, this.y + this.height);
+                else if (frame === 2) ctx.lineTo(this.x + 16, this.y + this.height - 3);
+                else ctx.lineTo(this.x + 30, this.y + this.height);
+                ctx.stroke();
+
+                // Torso (Environment/Green T-Shirt)
+                ctx.fillStyle = '#10b981'; // Emerald 500
+                ctx.beginPath();
+                ctx.roundRect(this.x + 8, this.y + 16 + bob, 28, 28, 8);
+                ctx.fill();
+
+                // Leaf Icon on T-shirt
+                ctx.fillStyle = '#a7f3d0';
+                ctx.beginPath();
+                ctx.ellipse(this.x + 22, this.y + 30 + bob, 4, 6, Math.PI/4, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Head (Skin tone)
+                ctx.fillStyle = '#fbcfe8'; // Peach/Pinkish skin tone
+                ctx.beginPath();
+                ctx.arc(this.x + 22, this.y + 10 + bob, 9, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Cute environmentalist headband
+                ctx.fillStyle = '#f43f5e'; // Rose headband
+                ctx.fillRect(this.x + 12, this.y + 3 + bob, 20, 4);
+
+                // Eye
+                ctx.fillStyle = '#0f172a';
+                ctx.beginPath();
+                ctx.arc(this.x + 26, this.y + 9 + bob, 1.5, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Arm swinging
+                ctx.lineWidth = 4.5;
+                ctx.strokeStyle = '#fbcfe8';
+                ctx.beginPath();
+                ctx.moveTo(this.x + 22, this.y + 20 + bob);
+                if (frame === 0 || frame === 2) {
+                    ctx.lineTo(this.x + 34, this.y + 32 + bob);
+                } else {
+                    ctx.lineTo(this.x + 10, this.y + 30 + bob);
+                }
+                ctx.stroke();
+
+                ctx.restore();
+            }
+        };
+
+        // Environment Item: Tumbler Vector Shape
+        class Tumbler {
+            constructor(canvasWidth, groundY) {
+                this.width = 24;
+                this.height = 36;
+                this.x = canvasWidth + Math.random() * 200;
+                // Place on ground, occasionally a bit floating for jumps
+                const floating = Math.random() > 0.4;
+                this.y = floating ? groundY - this.height - 50 - Math.random() * 60 : groundY - this.height;
+                this.speed = 4.5 + Math.random() * 1.5;
+                this.isCollected = false;
+                this.color = this.getRandomTumblerColor();
+            }
+
+            getRandomTumblerColor() {
+                const colors = ['#38bdf8', '#f43f5e', '#fbbf24', '#a855f7', '#fb7185', '#2dd4bf'];
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            update() {
+                this.x -= this.speed;
+            }
+
+            draw(ctx) {
+                if (this.isCollected) return;
+
+                ctx.save();
+                // Outer glow
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = 8;
+
+                // Tumbler body shape (slightly tapered cup)
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y + 6);
+                ctx.lineTo(this.x + 4, this.y + this.height);
+                ctx.lineTo(this.x + this.width - 4, this.y + this.height);
+                ctx.lineTo(this.x + this.width, this.y + 6);
+                ctx.closePath();
+                ctx.fill();
+
+                // Tumbler Lid
+                ctx.fillStyle = '#e2e8f0'; // Metallic/Silver lid
+                ctx.beginPath();
+                ctx.roundRect(this.x - 2, this.y, this.width + 4, 6, 2);
+                ctx.fill();
+
+                // Eco Brand Tag on Cup
+                ctx.fillStyle = 'rgba(255,255,255,0.4)';
+                ctx.font = 'bold 8px system-ui';
+                ctx.textAlign = 'center';
+                ctx.fillText('ECO', this.x + this.width/2, this.y + this.height/2 + 3);
+
+                ctx.restore();
+            }
+
+            collidesWith(p) {
+                if (this.isCollected) return false;
+                return (
+                    p.x < this.x + this.width &&
+                    p.x + p.width > this.x &&
+                    p.y < this.y + this.height &&
+                    p.y + p.height > this.y
+                );
+            }
+        }
+
+        // Scenery: Modern City Trees & Skyline in background
+        class SceneryElement {
+            constructor(canvasWidth, canvasHeight, type) {
+                this.type = type; // 'tree' or 'cloud' or 'building'
+                this.x = canvasWidth + Math.random() * 150;
+                this.scale = 0.5 + Math.random() * 0.8;
+                
+                if (type === 'tree') {
+                    this.y = gameCanvas.height - 110;
+                    this.speed = 2; // Parallex speed
+                } else if (type === 'building') {
+                    this.y = gameCanvas.height - 240;
+                    this.speed = 1;
+                } else { // Cloud
+                    this.y = 30 + Math.random() * 100;
+                    this.speed = 0.5;
+                }
+            }
+
+            update() {
+                this.x -= this.speed;
+            }
+
+            draw(ctx) {
+                ctx.save();
+                if (this.type === 'tree') {
+                    // Draw Vector Tree
+                    ctx.fillStyle = '#78350f'; // Trunk
+                    ctx.fillRect(this.x, this.y + 20, 8 * this.scale, 40 * this.scale);
+                    
+                    ctx.fillStyle = '#059669'; // Emerald Leaves
+                    ctx.beginPath();
+                    ctx.arc(this.x + 4 * this.scale, this.y + 15, 24 * this.scale, 0, Math.PI * 2);
+                    ctx.arc(this.x - 10 * this.scale, this.y, 18 * this.scale, 0, Math.PI * 2);
+                    ctx.arc(this.x + 18 * this.scale, this.y, 18 * this.scale, 0, Math.PI * 2);
+                    ctx.fill();
+                } else if (this.type === 'building') {
+                    // Stylized minimal skyline building
+                    ctx.fillStyle = 'rgba(30, 41, 59, 0.4)'; // Slate building
+                    ctx.fillRect(this.x, this.y, 60 * this.scale, 180 * this.scale);
+                    
+                    // Windows
+                    ctx.fillStyle = 'rgba(250, 204, 21, 0.1)';
+                    for (let row = 0; row < 6; row++) {
+                        for (let col = 0; col < 2; col++) {
+                            ctx.fillRect(this.x + 10 + col * 20, this.y + 15 + row * 25, 10, 15);
+                        }
+                    }
+                } else if (this.type === 'cloud') {
+                    // Minimal white/translucent clouds
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, 25, 0, Math.PI * 2);
+                    ctx.arc(this.x + 20, this.y - 10, 20, 0, Math.PI * 2);
+                    ctx.arc(this.x + 40, this.y, 25, 0, Math.PI * 2);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+        }
+
+        // --- GAME LOOP VARIABLES ---
+        let items = [];
+        let scenery = [];
+        let spawnTimer = 0;
+        let gameActive = false;
+        let groundY = 0;
+
+        // --- SCENE 2: START RUNNING GAME ENGINE ---
+        function startGame() {
+            // CRITICAL BUG FIX: Ensure the state manager registers the user is in run-game mode
+            currentScreen = 'game';
+            
+            // Initialization
+            collectedTumblers = 0;
+            hudCount.innerText = '0';
+            items = [];
+            scenery = [];
+            spawnTimer = 0;
+            player.y = 100;
+            player.vy = 0;
+            gameActive = true;
+            
+            resizeCanvases();
+            groundY = gameCanvas.height - 60; // 60px red road from bottom
+
+            // Initial scenery preload
+            for (let i = 0; i < 6; i++) {
+                const cloud = new SceneryElement(gameCanvas.width * Math.random(), gameCanvas.height, 'cloud');
+                scenery.push(cloud);
+                const building = new SceneryElement(gameCanvas.width * Math.random(), gameCanvas.height, 'building');
+                scenery.push(building);
+                const tree = new SceneryElement(gameCanvas.width * Math.random(), gameCanvas.height, 'tree');
+                scenery.push(tree);
+            }
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        function gameLoop() {
+            if (!gameActive) return;
+
+            // Clear Scene
+            gameCtx.fillStyle = '#0f172a'; // Deep slate blue sky
+            gameCtx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+
+            // Draw Mountain/Horizon background hint
+            gameCtx.fillStyle = '#022c22'; // Emerald 950 deep horizon
+            gameCtx.beginPath();
+            gameCtx.moveTo(0, groundY);
+            gameCtx.lineTo(gameCanvas.width / 3, groundY - 50);
+            gameCtx.lineTo(gameCanvas.width * 2 / 3, groundY - 20);
+            gameCtx.lineTo(gameCanvas.width, groundY - 40);
+            gameCtx.lineTo(gameCanvas.width, groundY);
+            ctxCloseAndFill(gameCtx);
+
+            // Update & Draw Background Scenery
+            scenery.forEach((elem, index) => {
+                elem.update();
+                elem.draw(gameCtx);
+                if (elem.x < -100) {
+                    scenery[index] = new SceneryElement(gameCanvas.width, gameCanvas.height, elem.type);
+                }
+            });
+
+            // Draw Red Road
+            gameCtx.fillStyle = '#ef4444'; // Red-500 road
+            gameCtx.fillRect(0, groundY, gameCanvas.width, 60);
+            gameCtx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+            gameCtx.lineWidth = 4;
+            gameCtx.setLineDash([20, 15]);
+            gameCtx.beginPath();
+            gameCtx.moveTo(0, groundY + 30);
+            gameCtx.lineTo(gameCanvas.width, groundY + 30);
+            gameCtx.stroke();
+            gameCtx.setLineDash([]); // Reset line dash
+
+            // Spawning Items (Tumblers)
+            spawnTimer++;
+            if (spawnTimer > 75) { // Spawn frequency
+                items.push(new Tumbler(gameCanvas.width, groundY));
+                spawnTimer = 0;
+            }
+
+            // Update & Draw Tumblers
+            for (let i = items.length - 1; i >= 0; i--) {
+                const item = items[i];
+                item.update();
+                item.draw(gameCtx);
+
+                if (item.collidesWith(player)) {
+                    item.isCollected = true;
+                    collectedTumblers++;
+                    hudCount.innerText = collectedTumblers;
+                    playSound('collect');
+
+                    hudCount.classList.add('scale-125');
+                    setTimeout(() => hudCount.classList.remove('scale-125'), 150);
+
+                    if (collectedTumblers >= TARGET_TUMBLERS) {
+                        triggerCutscene();
+                        return;
+                    }
+                }
+
+                if (item.x < -50) {
+                    items.splice(i, 1);
+                }
+            }
+
+            // Update & Draw Player Character
+            player.update(gameCanvas.height, groundY);
+            player.draw(gameCtx);
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        function ctxCloseAndFill(ctx) {
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        // Jump triggers for both touch and space keys
+        window.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' && currentScreen === 'game') {
+                e.preventDefault();
+                player.jump();
+            }
+        });
+
+        gameCanvas.addEventListener('touchstart', (e) => {
+            if (currentScreen === 'game') {
+                e.preventDefault();
+                player.jump();
+            }
+        }, { passive: false });
+
+        gameCanvas.addEventListener('mousedown', (e) => {
+            if (currentScreen === 'game') {
+                player.jump();
+            }
+        });
+
+        // ==================== SCENE 3: PHYSICS INTERACTIVE CUTSCENE ====================
+        let cutsceneActive = false;
+        let cutsceneTumblers = [];
+        let characterStruggleY = 0;
+        let textTime = 0;
+        const dialogueList = [
+            "드디어 집에 다 왔다... 마음이 풍족해지는 기분이야! 🏠",
+            "응? 그런데 보관할 곳이 없네... 😅",
+            "왜 자꾸 텀블러가 집안에서 불어나는 것 같지?! 💦",
+            "안돼... 숨이... 숨이 막힌다!! 😱",
+            "그린 쇼핑이라고 생각했는데... 구덩이에 빠지고 있어!!"
+        ];
+
+        class FallingTumbler {
+            constructor(w) {
+                this.x = 40 + Math.random() * (w - 80);
+                this.y = -50;
+                this.vy = 2 + Math.random() * 4;
+                this.vx = (Math.random() - 0.5) * 2;
+                this.width = 24;
+                this.height = 36;
+                this.angle = Math.random() * Math.PI;
+                this.rotSpeed = (Math.random() - 0.5) * 0.1;
+                this.color = ['#38bdf8', '#f43f5e', '#fbbf24', '#a855f7', '#fb7185', '#2dd4bf'][Math.floor(Math.random() * 6)];
+            }
+
+            update(groundLevel, itemsArray) {
+                this.vy += 0.2; // Gravity
+                this.y += this.vy;
+                this.x += this.vx;
+                this.angle += this.rotSpeed;
+
+                let stopY = groundLevel - this.height;
+                
+                let collisions = itemsArray.filter(other => 
+                    other !== this && 
+                    Math.abs(other.x - this.x) < 30 && 
+                    other.y > this.y
+                );
+                
+                if (collisions.length > 0) {
+                    const highest = Math.min(...collisions.map(c => c.y));
+                    stopY = highest - this.height + 4;
+                }
+
+                if (this.y >= stopY) {
+                    this.y = stopY;
+                    this.vy = 0;
+                    this.vx = 0;
+                    this.rotSpeed = 0;
+                }
+            }
+
+            draw(ctx) {
+                ctx.save();
+                ctx.translate(this.x + this.width/2, this.y + this.height/2);
+                ctx.rotate(this.angle);
+
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.moveTo(-this.width/2, -this.height/2 + 6);
+                ctx.lineTo(-this.width/2 + 4, this.height/2);
+                ctx.lineTo(this.width/2 - 4, this.height/2);
+                ctx.lineTo(this.width/2, -this.height/2 + 6);
+                ctx.closePath();
+                ctx.fill();
+
+                ctx.fillStyle = '#f1f5f9';
+                ctx.fillRect(-this.width/2 - 2, -this.height/2, this.width + 4, 6);
+                ctx.restore();
+            }
+        }
+
+        function triggerCutscene() {
+            gameActive = false;
+            
+            // Smoothly change screen with a safety delay buffer
+            changeScreen(screenGame, screenCutscene, () => {
+                currentScreen = 'cutscene';
+                cutsceneActive = true;
+                cutsceneTumblers = [];
+                characterStruggleY = 0;
+                textTime = 0;
+                dialogueIndex = 0;
+                frameCounter = 0;
+                document.getElementById('cutscene-dialogue').innerText = dialogueList[0];
+
+                resizeCanvases();
+                requestAnimationFrame(cutsceneLoop);
+            });
+        }
+
+        let frameCounter = 0;
+        let dialogueIndex = 0;
+
+        function cutsceneLoop() {
+            if (!cutsceneActive) return;
+
+            const w = cutsceneCanvas.width;
+            const h = cutsceneCanvas.height;
+            const groundFloorY = h - 60;
+
+            cutsceneCtx.clearRect(0, 0, w, h);
+
+            frameCounter++;
+            if (frameCounter % 150 === 0 && dialogueIndex < dialogueList.length - 1) {
+                dialogueIndex++;
+                document.getElementById('cutscene-dialogue').innerText = dialogueList[dialogueIndex];
+                playSound('warning');
+            }
+
+            let spawnProbability = 0.08;
+            if (frameCounter > 200) spawnProbability = 0.15;
+            if (frameCounter > 400) spawnProbability = 0.35;
+
+            if (Math.random() < spawnProbability && cutsceneTumblers.length < 150) {
+                cutsceneTumblers.push(new FallingTumbler(w));
+            }
+
+            cutsceneTumblers.forEach(tum => {
+                tum.update(groundFloorY, cutsceneTumblers);
+                tum.draw(cutsceneCtx);
+            });
+
+            const playerX = w / 2 - 22;
+            const basePlayerY = groundFloorY - 64;
+            const drownAmount = Math.min(60, cutsceneTumblers.length * 0.55);
+            const bobbing = Math.sin(frameCounter * 0.15) * 5;
+            const currentY = basePlayerY + drownAmount + bobbing;
+
+            drawStrugglingPlayer(cutsceneCtx, playerX, currentY, frameCounter);
+
+            if (cutsceneTumblers.length >= 130 || frameCounter > 750) {
+                cutsceneActive = false;
+                triggerWhiteout();
+            } else {
+                requestAnimationFrame(cutsceneLoop);
+            }
+        }
+
+        function drawStrugglingPlayer(ctx, x, y, tick) {
+            ctx.save();
+            const bob = Math.sin(tick * 0.2) * 3;
+
+            ctx.fillStyle = '#10b981';
+            ctx.beginPath();
+            ctx.roundRect(x + 8, y + 16 + bob, 28, 28, 8);
+            ctx.fill();
+
+            ctx.fillStyle = '#fbcfe8';
+            ctx.beginPath();
+            ctx.arc(x + 22, y + 10 + bob, 11, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = '#f43f5e';
+            ctx.fillRect(x + 10, y + 2 + bob, 24, 4);
+
+            ctx.fillStyle = '#0f172a';
+            ctx.font = 'bold 10px monospace';
+            ctx.fillText('O', x + 15, y + 13 + bob);
+            ctx.fillText('O', x + 25, y + 13 + bob);
+
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = '#fbcfe8';
+            
+            ctx.beginPath();
+            ctx.moveTo(x + 10, y + 22);
+            ctx.lineTo(x - 10 + Math.sin(tick)*5, y - 5 + Math.cos(tick)*5);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(x + 34, y + 22);
+            ctx.lineTo(x + 54 + Math.cos(tick)*5, y - 5 + Math.sin(tick)*5);
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
+        function triggerWhiteout() {
+            playSound('crash');
+            const overlay = document.getElementById('white-out');
+            const content = document.getElementById('white-out-content');
+            
+            overlay.classList.remove('pointer-events-none');
+            overlay.classList.replace('opacity-0', 'opacity-100');
+            
+            setTimeout(() => {
+                content.classList.replace('scale-95', 'scale-100');
+                
+                setTimeout(() => {
+                    transitionToEducation();
+                }, 4500);
+
+            }, 500);
+        }
+
+        // ==================== SCENE 4: CINEMATIC EDUCATION SCREEN ====================
+        let eduTimerInterval;
+        let eduTimeSeconds = 0;
+        let eduIsPlaying = true;
+
+        function transitionToEducation() {
+            const overlay = document.getElementById('white-out');
+            
+            // Fading out the white-out screen smoothly with the transition helper
+            changeScreen(screenCutscene, screenEducation, () => {
+                // Ensure overlay hides cleanly
+                overlay.classList.replace('opacity-100', 'opacity-0');
+                overlay.classList.add('pointer-events-none');
+                
+                currentScreen = 'education';
+                eduTimeSeconds = 0;
+                eduIsPlaying = true;
+                updateEduSlideVisibility();
+                
+                clearInterval(eduTimerInterval);
+                eduTimerInterval = setInterval(() => {
+                    if (eduIsPlaying) {
+                        eduTimeSeconds += 1; // 1s represented
+                        
+                        const mins = Math.floor(eduTimeSeconds / 60).toString().padStart(2, '0');
+                        const secs = (eduTimeSeconds % 60).toString().padStart(2, '0');
+                        eduTimer.innerText = `${mins}:${secs}`;
+
+                        // Adjusted timeline logic for 1 minute total length (60s total)
+                        if (eduTimeSeconds < 30) {
+                            eduStatusText.innerText = "전반부: 그린워싱 마케팅 기법 분석 중...";
+                            slideConcept.classList.remove('opacity-50', 'scale-95');
+                            slideTruth.classList.add('opacity-50');
+                        } else if (eduTimeSeconds >= 30 && eduTimeSeconds < 60) {
+                            eduStatusText.innerText = "후반부: 텀블러, 에코백의 반전 진실 분석 중...";
+                            slideConcept.classList.add('opacity-50');
+                            slideTruth.classList.remove('opacity-50', 'scale-95');
+                            
+                            const b1 = document.getElementById('bar-greenwash-1');
+                            if (b1) b1.style.width = '30%';
+                        } else {
+                            // Max timer reached (1 Minute completed)
+                            eduStatusText.innerText = "안내 방송 시청 완료: 최고의 소비는 불필요한 소비를 하지 않는 것입니다.";
+                            eduIsPlaying = false;
+                            playPauseIcon.className = "fa-solid fa-check";
+                            btnEduPlayPause.classList.replace('bg-emerald-500', 'bg-blue-500');
+                            clearInterval(eduTimerInterval);
+                        }
+                    }
+                }, 1000);
+            });
+        }
+
+        function updateEduSlideVisibility() {
+            playPauseIcon.className = eduIsPlaying ? "fa-solid fa-pause" : "fa-solid fa-play";
+        }
+
+        // Education Screen Buttons Controls
+        btnEduPlayPause.addEventListener('click', () => {
+            if (eduTimeSeconds >= 60) return; // Finished
+            eduIsPlaying = !eduIsPlaying;
+            updateEduSlideVisibility();
+        });
+
+        // Transition back to main screen
+        btnReplay.addEventListener('click', () => {
+            clearInterval(eduTimerInterval);
+            changeScreen(screenEducation, screenStart, () => {
+                currentScreen = 'start';
+            });
+        });
+
+        // Triggering Cinematic dialogue screen first instead of going straight to runner
+        btnStart.addEventListener('click', () => {
+            changeScreen(screenStart, screenIntro, () => {
+                currentScreen = 'intro';
+            });
+        });
+
+        // Running runner game from cinematic screen
+        btnIntroGo.addEventListener('click', () => {
+            changeScreen(screenIntro, screenGame, () => {
+                startGame();
+            });
+        });
+
+        // Resize Canvas on load
+        window.onload = () => {
+            resizeCanvases();
+        };
+    </script>
+</body>
+</html>
