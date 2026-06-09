@@ -1,2 +1,3 @@
 # natsugm.github.io
 사티아그라하 그린 조 그린워싱 심각성 게임입니다. 게임 자체는 무척 간단하니 게임 오버 후 설명에 주의를 기울여 주세요.
+https://github.com/natsugm/natsugm.github.io/blob/50dbd1cdcf9454a9b0a78bbb6daea58105124eec/index.html.html
